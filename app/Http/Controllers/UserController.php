@@ -46,7 +46,28 @@ class UserController extends Controller
       return $user;
     }
 
+    public function delete($id)
+    {
+      try
+      {
+          $user = $this->user->find($id);
+          $user->delete();
+          return response('Success',200);
+      }
+      catch(Exception $ex)
+      {
+          return response('fail',400);
+      }
+    }
 
+    public function updateUser(Request $request, $id)
+    {
+        $newName = $request->input('name');
+        $newEmail = $request->input('email');
+        $newPassword = md5($request->password);
+        DB::update('update users set name = ?, email = ?, password = ? where id = ?', [$newName, $newEmail, $newPassword, $id]);
+        return redirect('/all');
+    }
 
 
 }

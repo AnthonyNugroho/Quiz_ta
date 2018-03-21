@@ -23,6 +23,12 @@ Route::get('user/{id}', "UserController@find  ");
 
 Route::post('/user', "UserController@register");
 
+Route::get('/user/delete/{id}',"UserController@delete");
+
 Route::get('/item', "ItemController@all");
 
+Route::get('/item/{id}',"ItemController@find");
+
 Route::post('/item',"ItemController@register");
+
+Route::get('/item/delete/{id}',"ItemController@delete");

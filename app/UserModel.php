@@ -15,5 +15,6 @@ class UserModel extends Model
     {
       return $this->hasMany('item','id');
     }
+    
 
 }
